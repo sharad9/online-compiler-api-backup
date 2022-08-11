@@ -9,12 +9,13 @@ if (!fs.existsSync(outputPath)) {
 }
 
 const executeJava = (filepath) => {
+
 	const jobId = path.basename(filepath).split(".")[0];
-	const outPath = path.join(outputPath, `${jobId}.out`);
+	const outPath = path.join(outputPath, `${jobId}`);
 
 	return new Promise((resolve, reject) => {
 		exec(
-			`javac -d ${outPath} ${filepath} && java -cp ${outPath} ${jobId}`,
+			`javac -d ${outputPath} ${filepath} && java -cp ${outputPath} ${jobId}`,
 			(error, stdout, stderr) => {
 				error && reject({ error, stderr });
 				stderr && reject(stderr);
