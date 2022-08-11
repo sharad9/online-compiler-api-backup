@@ -15,7 +15,8 @@ const executeJava = (filepath) => {
 
 	return new Promise((resolve, reject) => {
 		exec(
-			`javac -d ${outputPath} ${filepath} && java -cp ${outputPath} ${jobId}`,
+			`java ${filepath}`,
+			//`javac -d ${outputPath} ${filepath} && java -cp ${outputPath} ${jobId}`,
 			(error, stdout, stderr) => {
 				error && reject({ error, stderr });
 				stderr && reject(stderr);
